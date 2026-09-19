@@ -2,46 +2,62 @@ import Image from "next/image";
 import Nav from "./Cx/Layout/Nav";
 import Footer from "./Cx/Layout/Footer";
 import Hero from "./Cx/Sections/Hero";
+import WhyAthleteClips from "./Cx/Sections/WhyAthleteClips";
+import HighlightServices from "./Cx/Sections/HighlightServices";
+import BuildingChampions from "./Cx/Sections/BuildingChampions";
+import HowItWorks from "./Cx/Sections/HowItWorks";
 import Images from "./Cx/Sections/Images";
 import Services from "./Cx/Sections/Services";
-import CTA1 from "./Cx/Sections/CTA-1";
+import MomentCTA from "./Cx/Sections/MomentCTA";
+import Reviews from "./Cx/Sections/Reviews";
 import Packages from "./Cx/Sections/Packages";
 
 export default function Home() {
   return (
     <>
-      <div className="relative" style={{ backgroundColor: "#2d204e" }}>
+      <div className="relative w-full bg-white">
+        <div
+          className="relative w-full"
+          style={{
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 94%, 0% 87.1%)",
+          }}
+        >
+          <Image
+            src="/hero-img.png"
+            alt="College athlete on the field"
+            width={1440}
+            height={1039}
+            priority
+            sizes="100vw"
+            className="block h-auto w-full"
+          />
+          <div className="absolute inset-0 flex flex-col">
+            <Nav />
+            <Hero />
+          </div>
+        </div>
+
         <Image
-          src="/top-left-corner.png"
+          src="/vector-5.png"
           alt=""
-          width={1920}
-          height={1080}
+          width={1440}
+          height={135}
           unoptimized
-          className="pointer-events-none absolute left-0 top-0 z-30 w-[95%] max-w-[950px]"
+          className="pointer-events-none absolute bottom-0 left-0 z-20 w-full"
+          aria-hidden="true"
         />
-        <Image
-          src="/main-banner-bkg.png"
-          alt=""
-          width={1920}
-          height={1080}
-          unoptimized
-          className="pointer-events-none absolute left-0 top-[25%] z-50 w-full"
-        />
-        <Nav/>
-        <Hero/>
-        {/* <Image
-          src="/shadow.png"
-          alt=""
-          width={1920}
-          height={200}
-          className="pointer-events-none absolute bottom-0 left-0 z-50 w-full translate-y-1/2"
-        /> */}
       </div>
-      <Images/>
-      <Services/>
-      <CTA1/>
-      <Packages/>
-      <Footer/>
+
+      <WhyAthleteClips />
+      <HighlightServices />
+      <BuildingChampions />
+      <HowItWorks />
+      {/* <Images /> */}
+      <Services />
+      <MomentCTA />
+      <Reviews />
+      {/* <Packages /> */}
+      <Footer />
     </>
-  )
+  );
 }

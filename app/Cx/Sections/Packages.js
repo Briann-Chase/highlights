@@ -107,6 +107,7 @@ const Packages = () => {
 
   return (
     <section
+      id="packages"
       className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-16 lg:px-10"
       style={{ backgroundColor: "#2d204e" }}
     >

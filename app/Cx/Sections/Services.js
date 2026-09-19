@@ -1,70 +1,92 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { anton } from "../Font/Font";
 
-const cards = [
-  {
-    title: "Dynamic Reels",
-    image: "/dynamic-reel-image.png",
-    alt: "Dynamic soccer reel preview",
-  },
-  {
-    title: "Pro Quality Videos",
-    image: "/pro-quality-vids.png",
-    alt: "Pro quality sports video preview",
-    accent: (
-      <div className="absolute left-1/2 top-14 h-0 w-0 -translate-x-1/2 border-x-16 border-t-24 border-x-transparent border-t-[#ff4a3a]" />
-    ),
-  },
-  {
-    title: "Slow-Mo & Effects",
-    image: "/slow-mo.png",
-    alt: "Slow motion soccer edit preview",
-  },
+const videos = [
+  { id: "na_-1PU-1LU", title: "Keelie Chase highlight reel 1" },
+  { id: "D3urcZybv-E", title: "Keelie Chase highlight reel 2" },
+  { id: "jGUcirafChE", title: "Keira Huibregtse highlight reel" },
+  { id: "cBLQ-Ww_91Y", title: "Athlete Clips work sample 4" },
+  { id: "E1mQyUNFBxA", title: "Athlete Clips work sample 5" },
+  { id: "Z-fjZDuioqc", title: "Athlete Clips work sample 6" },
 ];
 
+const VISIBLE = 3;
+
 const Services = () => {
+  const [startIndex, setStartIndex] = useState(0);
+  const maxStart = Math.max(0, videos.length - VISIBLE);
+
+  const prev = () => setStartIndex((i) => Math.max(0, i - 1));
+  const next = () => setStartIndex((i) => Math.min(maxStart, i + 1));
+
+  const visibleVideos = videos.slice(startIndex, startIndex + VISIBLE);
+
   return (
-    <section
-      className="relative px-4 py-14 sm:px-6 sm:py-16 lg:px-10"
-      style={{ backgroundColor: "#2d204e" }}
-    >
+    <section className="relative overflow-hidden bg-white px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-7xl">
-        <h2
-          className={`${anton.className} text-center text-[2.4rem] leading-none text-white uppercase sm:text-[3.5rem]`}
-          data-aos="fade-down"
+        <div
+          className="flex flex-col items-center text-center"
+          data-aos="fade-up"
           data-aos-duration="700"
         >
-          Services We Offer
-        </h2>
+          <span className="inline-flex items-center rounded-full border border-[#00c6bd] bg-black px-5 py-1.5 text-[11px] font-semibold tracking-[0.14em] text-[#00c6bd] uppercase sm:text-xs">
+            Featured Work
+          </span>
 
-        <div data-aos="fade-up" data-aos-duration="700" className="mx-auto mt-10 grid max-w-[1257px] gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
+          <h2
+            className={`${anton.className} mt-5 max-w-[900px] text-[2rem] leading-[1.05] text-[#1a1a1a] uppercase sm:text-[2.75rem] lg:text-[3.5rem]`}
+          >
+            Highlight Reels That Get Results
+          </h2>
+        </div>
+
+        <div
+          className="mt-10 grid gap-5 sm:mt-12 md:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6"
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
+          {visibleVideos.map((video) => (
             <div
-              key={card.title}
-              className="relative mx-auto w-full max-w-[403px] overflow-hidden rounded-xl bg-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.18)]"
+              key={video.id}
+              className="overflow-hidden rounded-xl bg-[#111] shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
             >
-              <div className="relative h-[424px]">
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  unoptimized
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className={card.imageClassName ?? "object-cover"}
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                  title={video.title}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
                 />
-
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.18)_45%,rgba(0,0,0,0.38)_100%)]" />
-
-                <h3
-                  className={`${anton.className} absolute left-1/2 top-8 w-full tracking-wider -translate-x-1/2 px-4 text-center text-[1.65rem] text-white uppercase sm:text-[2.5rem]`}
-                >
-                  {card.title}
-                </h3>
-
-                {/* {card.accent ?? null} */}
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-6 flex justify-end gap-2 sm:mt-8">
+          <button
+            type="button"
+            onClick={prev}
+            disabled={startIndex === 0}
+            aria-label="Previous videos"
+            className="flex size-11 items-center justify-center rounded-md bg-[#d4d4d4] text-white transition enabled:hover:bg-[#c4c4c4] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <HiChevronLeft className="size-6" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            disabled={startIndex >= maxStart}
+            aria-label="Next videos"
+            className="flex size-11 items-center justify-center rounded-md bg-[#2a2a2a] text-white transition enabled:hover:bg-[#3a3a3a] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <HiChevronRight className="size-6" />
+          </button>
         </div>
       </div>
     </section>
