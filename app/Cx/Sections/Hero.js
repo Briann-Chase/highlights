@@ -1,44 +1,74 @@
+import Image from "next/image";
 import { anton } from "../Font/Font";
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-1 flex-col justify-center pb-10 pt-4 sm:pb-14 lg:pb-16">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10">
+    <section
+      className="relative z-40 overflow-visible"
+    >
+      <div className="relative mx-auto flex min-h-[calc(100vh-78px)] max-w-7xl flex-col justify-start px-4 pt-4 pb-12 sm:px-6 sm:pt-6 sm:pb-14 lg:min-h-[540px] lg:px-10 lg:pt-8 lg:pb-16">
         <div
-          className="max-w-[640px]"
+          className="relative z-10 max-w-[620px]"
           data-aos="fade-right"
           data-aos-duration="700"
         >
           <h1
-            className={`${anton.className} text-[2.4rem] leading-[0.95] uppercase tracking-wide sm:text-[3.5rem] lg:text-[4.6rem]`}
+            className={`${anton.className} max-w-[620px] text-[2.4rem] leading-[0.92] text-white uppercase sm:text-[3.4rem] lg:text-[4.15rem]`}
           >
-            <span className="block text-white">College Recruiting</span>
-            <span className="mt-1 block text-[#f39c3f]">Highlight Reels</span>
+            Professional Sports
+            <br />
+            Highlight Reels
           </h1>
 
-          <p className="mt-5 text-lg font-semibold text-white sm:text-2xl">
-            Get Noticed by College Coaches
+          <p className="mt-4 max-w-[360px] text-lg leading-7 text-white/90 sm:text-[1.55rem] sm:leading-9">
+            Serious about playing college sports? This step isn&apos;t optional.
           </p>
 
-          <p className="mt-3 max-w-[420px] text-sm leading-relaxed text-white/90 sm:text-lg">
-            We create professional, coach-ready highlight reels that showcase
-            your talent and help you stand out.
-          </p>
-
-          <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
-            <a
-              href="https://athleteclips.com/package-pricing-2/"
-              className="inline-flex items-center justify-center rounded-md bg-gradient-to-b from-[#3d8bfd] to-[#1a4fbf] px-6 py-2.5 text-sm font-semibold text-white transition hover:from-[#4a95ff] hover:to-[#2158d0] sm:px-7 sm:py-3 sm:text-base"
-            >
-              View Packages
-            </a>
-            <a
-              href="https://athleteclips.com/package-pricing-2/"
-              className="inline-flex items-center justify-center rounded-md border border-[#f39c3f]/80 bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition hover:border-[#f39c3f] hover:bg-white/10 sm:px-7 sm:py-3 sm:text-base"
-            >
-              Get Started Now
-            </a>
+          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-3 text-white">
+            <span className="text-xl font-semibold sm:text-[2rem]">
+              Get your professional
+            </span>
+            <span className="group inline-flex items-center gap-2 text-base sm:text-lg">
+              <a
+                href="https://athleteclips.com/package-pricing-2/"
+                className="inline-flex items-center rounded-xl bg-[#ff9b3f] px-5 py-2 font-bold text-white transition hover:bg-[#ffa654]"
+              >
+                Highlight Reel
+              </a>
+              <Image
+                src="/arrow-orange.png"
+                alt=""
+                width={80}
+                height={80}
+                className="motion-safe:animate-bounce"
+                aria-hidden="true"
+              />
+            </span>
           </div>
+
+          <p
+            className={`${anton.className} mt-7 text-[1.6rem] leading-tight text-white uppercase sm:text-[2.25rem]`}
+          >
+            Use the code{" "}
+            <span className="text-[#ff8f24]">&ldquo;Athlete20&rdquo;</span> Get
+            20% Off
+          </p>
+        </div>
+
+        <div
+          className="relative mt-8 h-[400px] w-full overflow-visible sm:h-[500px] lg:absolute lg:inset-y-0 lg:right-[-40%] lg:mt-10 lg:h-full lg:w-[64%]"
+          data-aos="fade-left"
+          data-aos-duration="700"
+        >
+          <Image
+            src="/hero-image.png"
+            alt="Soccer player kicking a ball"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 64vw"
+            className="object-contain object-bottom lg:object-bottom-right"
+            style={{ transform: "scaleX(-1) scale(1.5)" }}
+          />
         </div>
       </div>
     </section>
