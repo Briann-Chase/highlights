@@ -6,42 +6,35 @@ import Images from "./Cx/Sections/Images";
 import Services from "./Cx/Sections/Services";
 import CTA1 from "./Cx/Sections/CTA-1";
 import Packages from "./Cx/Sections/Packages";
+import CTA2 from "./Cx/Sections/CTA-2";
 
 export default function Home() {
   return (
     <>
-      <div className="relative" style={{ backgroundColor: "#2d204e" }}>
+      <div className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black">
         <Image
-          src="/top-left-corner.png"
+          src="/images/main-hero-bg.png"
           alt=""
-          width={1920}
-          height={1080}
-          unoptimized
-          className="pointer-events-none absolute left-0 top-0 z-30 w-[95%] max-w-[950px]"
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none object-cover object-[70%_center]"
+          aria-hidden="true"
         />
-        <Image
-          src="/main-banner-bkg.png"
-          alt=""
-          width={1920}
-          height={1080}
-          unoptimized
-          className="pointer-events-none absolute left-0 top-[25%] z-50 w-full"
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent"
+          aria-hidden="true"
         />
-        <Nav/>
-        <Hero/>
-        {/* <Image
-          src="/shadow.png"
-          alt=""
-          width={1920}
-          height={200}
-          className="pointer-events-none absolute bottom-0 left-0 z-50 w-full translate-y-1/2"
-        /> */}
+        <Nav />
+        <Hero />
       </div>
-      <Images/>
-      <Services/>
-      <CTA1/>
-      <Packages/>
-      <Footer/>
+
+      <Images />
+      <Services />
+      <CTA1 />
+      <Packages />
+      <CTA2 />
+      <Footer />
     </>
-  )
+  );
 }

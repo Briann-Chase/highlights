@@ -1,10 +1,9 @@
-import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import Image from "next/image";
+
 const Nav = () => {
   return (
-    <nav
-      className="relative z-50 px-4 py-4 sm:px-6 lg:px-10"
-    >
+    <nav className="relative z-50 px-4 py-4 sm:px-6 lg:px-10">
       <div className="relative z-50 mx-auto flex min-h-[78px] max-w-7xl items-center justify-between">
         <a
           href="https://athleteclips.com/"
